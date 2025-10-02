@@ -21,7 +21,7 @@ h1 {
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 
 .nav-container {
@@ -69,7 +69,7 @@ h1 {
 /* Main Section */
 .main-content {
     max-width: 1200px;
-    margin: 2rem auto;
+    margin: 0 auto;
     padding: 0 20px;
     flex: 1;
     width: 100%;
@@ -109,6 +109,7 @@ h1 {
 .hero-parallax {
     position: relative;
     height: 500px;
+    width: 100%;
     background-image: url('../assets/img/hero.jpg');
     background-attachment: fixed;
     background-position: center;
@@ -193,6 +194,11 @@ h1 {
     font-weight: bold;
     color: #000;
     margin: 10px 0;
+}
+
+.product .stock {
+    color: #666;
+    font-size: 1em;
 }
 
 .product a {
@@ -288,6 +294,29 @@ h1 {
 }
 
 .checkout-btn:hover {
+    background: #218838;
+}
+
+.checkout-info {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px;
+}
+
+.checkout-info p {
+    font-size: 16px;
+}
+
+.whatsapp-btn {
+    background: #28a745;
+    color: white !important;
+    padding: 15px;
+    text-decoration: none;
+    border-radius: 15px;
+}
+
+.whatsapp-btn:hover {
     background: #218838;
 }
 
@@ -544,24 +573,38 @@ h1 {
     border: 1px solid #f5c6cb;
 }
 
-/* Base styles for sticky footer */
-html {
-    height: 100%;
-}
-
-body {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-}
-
-.main-content {
-    flex: 1;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+.register-box {
+    max-width: 600px;
+    margin: 2rem auto;
     padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    align-items: center;
+}
+
+.register-actions {
+    /* display: flex; */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.login-box {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    align-items: center;
+}
+
+.login-actions {
+    /* display: flex; */
+    gap: 15px;
+    margin-top: 20px;
 }
 
 /* Footer styles */
@@ -697,10 +740,10 @@ body {
         height: 300px;
     }
 
-    .hero-parallax {
+    /* .hero-parallax {
         background-attachment: scroll;
         height: 300px;
-    }
+    } */
 
     .hero-text h2 {
         font-size: 1.8em;
@@ -786,19 +829,14 @@ body {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-
-    .footer {
-        margin: 0;
-        padding: 0;
-    }
-
 }
 
 /* Mobile Large (425px) - Added new breakpoint */
 @media screen and (max-width: 426px) {
     .main-content {
         padding: 0px;
-        overflow-x: hidden; /* Prevent horizontal scroll */
+        overflow-x: hidden;
+        /* Prevent horizontal scroll */
     }
 
     .products {
@@ -852,10 +890,38 @@ body {
         transform: translateZ(0);
     }
 
-    .product-image {
+    .product-detail {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+        gap: 15px;
+        padding: 10px 0;
+        justify-items: center;
+        align-items: center;
+        margin: 0 auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 100%;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+        /* -webkit-overflow-scrolling: touch; */
+        scroll-snap-type: y mandatory;
+        scroll-padding: 10px;
+        scroll-snap-stop: always;
+        scroll-snap-align: start;
+        /* overscroll-behavior: contain; */
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        /* scrollbar-width: none; */
+        touch-action: pan-y;
+    }
+
+    .product-detail .product-image {
         margin: 0 auto;
         display: block;
-        max-width: 100%;
+        /* max-width: 100%; */
         object-fit: cover;
         object-position: center;
         border-radius: 8px;
@@ -865,13 +931,8 @@ body {
         background: #fff;
         overflow: hidden;
         /* Fixed Height */
-        height: 300px;
+        height: 100%;
         width: 100%;
         max-width: 300px;
-    }
-
-    .footer {
-        margin: 0;
-        padding: 0;
     }
 }

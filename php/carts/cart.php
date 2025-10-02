@@ -15,13 +15,13 @@ if (!isset($_SESSION['user_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Website title -->
-    <title>Carts - GayaKami</title>
+    <title>Carts - Gayakami</title>
 
     <!-- Favicons & Web Manifest -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="../../assets/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon/favicon.png">
     <link rel="manifest" href="site.webmanifest">
 
     <!-- Styles & Fonts -->
@@ -55,15 +55,15 @@ if (!isset($_SESSION['user_id'])) {
                     ?>
                         <li class="cart-item">
                             <div><?php echo htmlspecialchars($item['name']); ?></div>
-                            <div>$<?php echo number_format($item['price'], 2); ?></div>
+                            <div>Rp <?php echo number_format($item['price'], 2); ?></div>
                             <div><?php echo $item['quantity']; ?></div>
-                            <div>$<?php echo number_format($subtotal, 2); ?></div>
+                            <div>Rp <?php echo number_format($subtotal, 2); ?></div>
                         </li>
                     <?php endforeach; ?>
                 </ul>
 
                 <div class="cart-total">
-                    <span>Total: $<?php echo number_format($total, 2); ?></span>
+                    <span>Total: Rp <?php echo number_format($total, 2); ?></span>
                 </div>
 
                 <div class="cart-buttons">

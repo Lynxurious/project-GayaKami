@@ -3,10 +3,10 @@ function renderNavbar($relativePath = "") {
     ?>
     <nav class="navbar">
         <div class="nav-container">
-            <a href="<?php echo $relativePath; ?>index.php" class="nav-brand">GayaKami</a>
+            <a href="<?php echo $relativePath; ?>index.php" class="nav-brand">Gayakami</a>
             <div class="nav-links">
                 <a href="<?php echo $relativePath; ?>index.php">Home</a>
-                <a href="<?php echo $relativePath; ?>php/products/categories.php">Categories</a>
+                <a href="<?php echo $relativePath; ?>index.php">Categories</a>
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <a href="<?php echo $relativePath; ?>php/accounts/myaccount.php">My Account</a>
                     <a href="#" onclick="confirmLogout('<?php echo $relativePath; ?>php/accounts/logout_handler.php'); return false;">Logout</a>

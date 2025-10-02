@@ -31,13 +31,13 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Website title -->
-    <title><?php echo htmlspecialchars($product['name']); ?> - GayaKami</title>
+    <title><?php echo htmlspecialchars($product['name']); ?> - Gayakami</title>
 
     <!-- Favicons & Web Manifest -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="../../assets/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon/favicon.png">
     <link rel="manifest" href="site.webmanifest">
 
     <!-- Styles & Fonts -->
@@ -51,14 +51,15 @@ $conn->close();
 
 <body>
     <?php renderNavbar("../../"); ?>
+
     <div class="product-detail">
         <div class="product-image">
-            <img src="../../assets/img/<?php echo htmlspecialchars($product['image']); ?>"
+            <img src="../../assets/img/gayakami/<?php echo htmlspecialchars($product['image']); ?>"
                 alt="<?php echo htmlspecialchars($product['name']); ?>">
         </div>
         <div class="product-info">
             <h1><?php echo htmlspecialchars($product['name']); ?></h1>
-            <p class="price">$<?php echo number_format($product['price'], 2); ?></p>
+            <p class="price">Rp <?php echo number_format($product['price'], 2); ?></p>
             <p class="stock">Stock Available: <?php echo $product['stock']; ?> units</p>
             <div class="description">
                 <h3>Description</h3>

@@ -31,7 +31,8 @@ function secure_query($conn, $sql, $types, $params) {
 // Set Notification URL: Later, it'll be something like http://your-site.com/notification_handler.php (use ngrok for local testing—see below).
 
 
-require_once 'vendor/autoload.php';
+// require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 \Midtrans\Config::$serverKey = '';          // From dashboard (keep secret!)
 \Midtrans\Config::$clientKey = '';          // From dashboard

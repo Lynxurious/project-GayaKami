@@ -21,7 +21,7 @@ $user = $result->fetch_assoc();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
-    
+
     // Validate input
     if (empty($username) || empty($email)) {
         $message = "All fields are required";
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Update user info
         $sql = "UPDATE users SET username = ?, email = ? WHERE id = ?";
         $stmt = secure_query($conn, $sql, "ssi", [$username, $email, $_SESSION['user_id']]);
-        
+
         if ($stmt) {
             $message = "Profile updated successfully!";
             // Update displayed data
@@ -44,20 +44,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Profile - GayaKami</title>
+
+    <!-- Edit Profile - Gayakami -->
+    <title>Edit Profile - Gayakami</title>
+
+    <!-- Favicons & Web Manifest -->
+    <link rel="icon" type="image/x-icon" href="../../assets/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon/favicon.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- Styles & Fonts -->
     <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <?php renderNavbar("../../"); ?>
-    
+
     <div class="main-content">
         <div class="account-container">
             <h1>Edit Profile</h1>
-            
+
             <?php if ($message): ?>
                 <div class="alert <?php echo strpos($message, 'successfully') !== false ? 'alert-success' : 'alert-error'; ?>">
                     <?php echo $message; ?>
@@ -69,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label for="username"><i class="fas fa-user"></i> Username</label>
                     <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($user['username']); ?>" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="email"><i class="fas fa-envelope"></i> Email</label>
                     <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required>
@@ -89,4 +105,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <?php renderFooter(); ?>
 </body>
+
 </html>

@@ -12,13 +12,13 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Website title -->
-    <title>GayaKami</title>
+    <title>Gayakami</title>
 
     <!-- Favicons & Web Manifest -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon.png">
     <link rel="manifest" href="site.webmanifest">
 
     <!-- Styles & Fonts -->
@@ -33,7 +33,16 @@ session_start();
 <body>
     <?php renderNavbar(""); ?>
     <div class="main-content">
-        <?php if(isset($_SESSION['user_id'])): 
+        <!-- Hero section -->
+        <div class="hero-parallax">
+            <div class="hero-text">
+                <h2>Welcome to Gayakami</h2>
+                <p>Explore Our Latest Collections</p>
+            </div>
+        </div>
+
+        <!-- Welcome message (if logged in) -->
+        <?php if (isset($_SESSION['user_id'])):
             $sql = "SELECT username FROM users WHERE id = ?";
             $stmt = secure_query($conn, $sql, "i", [$_SESSION['user_id']]);
             $result = $stmt->get_result();
@@ -43,14 +52,6 @@ session_start();
                 <h3>Welcome back, <?php echo htmlspecialchars($user['username']); ?>!</h3>
             </div>
         <?php endif; ?>
-
-        <!-- Hero section -->
-        <div class="hero-parallax">
-            <div class="hero-text">
-                <h2>Welcome to GayaKami</h2>
-                <p>Explore Our Latest Collections</p>
-            </div>
-        </div>
 
         <!-- Products Section -->
         <h2>Browse our Collections</h2>
@@ -64,12 +65,12 @@ session_start();
                     echo "<div class='product'>";
                     echo "<div class='product-image'>";
                     echo "<a href='php/products/product.php?id=" . $row['id'] . "'>";
-                    echo "<img src='assets/img/" . $row['image'] . "' alt='" . $row['name'] . "'>";
+                    echo "<img src='assets/img/gayakami/" . $row['image'] . "' alt='" . $row['name'] . "'>";
                     echo "</a>";
                     echo "</div>";
                     echo "<h2>" . $row['name'] . "</h2>";
-                    echo "<p class='description'>" . $row['description'] . "</p>";
-                    echo "<p class='price'>Rp" . $row['price'] . " (Stock: " . $row['stock'] . ")</p>";
+                    //echo "<p class='description'>" . $row['description'] . "</p>";
+                    echo "<p class='price'>Rp " . $row['price'] . " <span class='stock'>(Stock: " . $row['stock'] . ")</span></p>";
                     echo "<form method='post' action='php/carts/add_to_cart.php'>";
                     echo "<input type='hidden' name='product_id' value='" . $row['id'] . "'>";
                     echo "<input type='number' name='quantity' value='1' min='1' max='" . $row['stock'] . "'>";
@@ -87,4 +88,5 @@ session_start();
     </div>
     <?php renderFooter(); ?>
 </body>
+
 </html>
